@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sankey Diagram</title>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+<body>
+  <div id="sankey_multiple" style="width: 900px; height: 300px;"></div>
+  <script type="text/javascript">
+    google.charts.load("current", {packages:["sankey"]});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'From');
+      data.addColumn('string', 'To');
+      data.addColumn('number', 'Weight');
+      data.addRows([
+        ['Generative AI', 'AI', 30],
+        ['Robotics', 'AI', 30],
+        ['Computer vision', 'AI', 30],
+        ['Deep learning', 'AI', 10],
+        ['Reinforcement learning', 'AI', 10],
+        ['Probabilistic methods', 'AI', 10],
+        ['Evolutionary algorithms', 'AI', 10],
+        ['ANI Narrow general Intelligence', 'AI', 10],
+        ['ANI Narrow general Intelligence', 'AI', 10],  
+        ['ML', 'AI', 10],
+        ['Deep learning', 'ML', 30],
+        ['Reinforcement learning', 'ML', 30],
+        ['Probabilistic methods', 'ML', 30],
+        ['Evolutionary algorithms', 'ML', 30],
+        ['ML', 'AGI Artificial general Intelligence', 10],
+        ['ML', 'ASI Super Intelligence', 10],
+        ['ML', 'Generative AI', 10],
+        ['ML', 'Robotics', 10],
+        ['ML', 'Computer vision', 10],
+        ['AGI Artificial general Intelligence', 'AI', 30],
+        ['ASI Super Intelligence', 'AI', 30],
+        
+        ['Symbolic AI (traditional automation', 'Non AI', 10],
+        ['Symbolic AI (traditional automation', 'AI', 10]
+      ]);
+      var colors = ['#a6cee3', '#b2df8a', '#fb9a99', '#fdbf6f',
+      '#cab2d6', '#ffff99', '#1f78b4', '#33a02c', '#e31a1c', '#ff7f00',
+      '#6a3d9a', '#b15928', '#b2df8a', '#33a02c', '#fb9a99', '#fdbf6f',
+      '#cab2d6', '#ffff99', '#1f78b4', '#e31a1c', '#ff7f00', '#6a3d9a',
+      '#b15928', '#a6cee3', '#b2df8a', '#fb9a99', '#fdbf6f', '#cab2d6',
+      '#ffff99', '#1f78b4', '#33a02c', '#e31a1c', '#ff7f00', '#6a3d9a',
+      '#b15928'];
+      // Set chart options
+      var options = {
+        width: 1500,
+        height:1000,
+        sankey: { node: { nodePadding: 80 } },
+    
+        sankey: {
+        node: {
+          colors: colors
+        },
+        link: {
+          colorMode: 'gradient',
+          colors: colors
+        }
+      }
+      };
+
+      // Instantiate and draw our chart, passing in some options.
+      var chart = new google.visualization.Sankey(document.getElementById('sankey_multiple'));
+      chart.draw(data, options);
+    }
+  </script>
+</body>
+</html>
