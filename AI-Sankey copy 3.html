@@ -7,6 +7,26 @@
 <body>
   <div id="sankey_multiple" style="width: 900px; height: 300px;"></div>
   <script type="text/javascript">
+    current_use_flows = [
+      ['Symbolic AI (traditional automation)', 'Non AI', 30],
+      ['Symbolic AI (traditional automation)', 'AI', 30], // # 50% classified as AI
+      ['ANI Artificial Narrow Intelligence', 'AI', 30],
+      ['Generative AI', 'AI', 10],
+      ['Robotics', 'AI', 5],
+      ['Computer vision', 'AI', 10],
+      ['AGI Artificial general Intelligence', 'AI', 1],
+      ['ASI Super Intelligence', 'AI', 0.5],
+      ['ML', 'AI', 70],
+      ['Deep learning', 'ML', 40],
+      ['Reinforcement learning', 'ML', 10],
+      ['Probabilistic methods', 'ML', 5],
+      ['Evolutionary algorithms', 'ML', 5],
+      ['ML', 'AGI Artificial general Intelligence', 2],
+      ['ML', 'ASI Super Intelligence', 1],
+      ['ML', 'Generative AI', 10],
+      ['ML', 'Robotics', 5],
+      ['ML', 'Computer vision', 7]
+  ]
     google.charts.load("current", {packages:["sankey"]});
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
