@@ -71,7 +71,7 @@
         {"name": "Computer vision"},
         {"name": "NLP"},
         {"name": "ANI Narrow general Intelligence"},
-        {"name": "Symbolic AI (traditional automation"},
+        {"name": "Symbolic AI (traditional automation)"},
         {"name": "Non AI"}
       ],
       "links": [
@@ -96,13 +96,19 @@
         {"source": 5, "target": 1, "value": 10},
         {"source": 12, "target": 1, "value": 10},
         {"source": 12, "target": 1, "value": 10},
-        {"source": 13, "target": 14, "value": 10},
+        {"source": 13, "target": 14, "value": 100},
         {"source": 13, "target": 1, "value": 10}
       ]
     };
 
     sankey(graph);
-
+        // Adjust the y position of specific nodes
+        graph.nodes.forEach(function(d) {
+      if (d.name === "ML" || d.name === "Deep learning" || d.name === "Reinforcement learning" || d.name === "Probabilistic methods" || d.name === "Evolutionary algorithms") {
+        d.y0 += 50; // Move down by 50 pixels
+        d.y1 += 50; // Move down by 50 pixels
+      }
+    });
     link = link
       .data(graph.links)
       .enter().append("path")
