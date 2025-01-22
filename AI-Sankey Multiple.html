@@ -5,31 +5,43 @@
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 <body>
+  <div>
+    <label for="flowSelect">Select Flow:</label>
+    <select id="flowSelect" onchange="drawChart()">
+      <option value="current_use_flows">Current Use Flows</option>
+      <option value="research_funding_flows">Research Funding Flows</option>
+      <option value="market_share_flows">Market Share Flows</option>
+    </select>
+  </div>
   <div id="sankey_multiple" style="width: 900px; height: 300px;"></div>
   <script type="text/javascript">
+    google.charts.load("current", {packages:["sankey"]});
+    google.charts.setOnLoadCallback(drawChart);
+
     current_use_flows = [
-      ['Symbolic AI (traditional automation)', 'Non AI', 30],
-      ['Symbolic AI (traditional automation)', 'AI', 30], // # 50% classified as AI
-      ['ANI Artificial Narrow Intelligence', 'AI', 30],
-      ['Generative AI', 'AI', 10],
-      ['Robotics', 'AI', 5],
-      ['Computer vision', 'AI', 10],
-      ['AGI Artificial general Intelligence', 'AI', 1],
-      ['ASI Super Intelligence', 'AI', 0.5],
-      ['ML', 'AI', 70],
-      ['Deep learning', 'ML', 40],
-      ['Reinforcement learning', 'ML', 10],
-      ['Probabilistic methods', 'ML', 5],
-      ['Evolutionary algorithms', 'ML', 5],
-      ['ML', 'AGI Artificial general Intelligence', 2],
-      ['ML', 'ASI Super Intelligence', 1],
-      ['ML', 'Generative AI', 10],
-      ['ML', 'Robotics', 5],
-      ['ML', 'Computer vision', 7]
-  ]
-  research_funding_flows = [
+    ['Symbolic AI (traditional automation)', 'Non AI', 30],
+    ['Symbolic AI (traditional automation)', 'AI', 30], // # 50% classified as AI
+    ['ANI Artificial Narrow Intelligence', 'AI', 30],
+    ['Generative AI', 'AI', 10],
+    ['Robotics', 'AI', 5],
+    ['Computer vision', 'AI', 10],
+    ['AGI Artificial general Intelligence', 'AI', 1],
+    ['ASI Super Intelligence', 'AI', 0.5],
+    ['ML', 'AI', 70],
+    ['Deep learning', 'ML', 40],
+    ['Reinforcement learning', 'ML', 10],
+    ['Probabilistic methods', 'ML', 5],
+    ['Evolutionary algorithms', 'ML', 5],
+    ['ML', 'AGI Artificial general Intelligence', 2],
+    ['ML', 'ASI Super Intelligence', 1],
+    ['ML', 'Generative AI', 10],
+    ['ML', 'Robotics', 5],
+    ['ML', 'Computer vision', 7]
+]
+
+ research_funding_flows = [
     ['Symbolic AI (traditional automation)', 'Non AI', 5],
-    ['Symbolic AI (traditional automation)', 'AI', 5],//  # 50% classified as AI
+    ['Symbolic AI (traditional automation)', 'AI', 5],  //# 50% classified as AI
     ['ANI Artificial Narrow Intelligence', 'AI', 20],
     ['Generative AI', 'AI', 30],
     ['Robotics', 'AI', 15],
@@ -46,10 +58,11 @@
     ['ML', 'Generative AI', 10],
     ['ML', 'Robotics', 5],
     ['ML', 'Computer vision', 7]
-  ]
-  market_share_flows = [
+]
+
+market_share_flows = [
     ['Symbolic AI (traditional automation)', 'Non AI', 25],
-    ['Symbolic AI (traditional automation)', 'AI', 25],  //# 50% classified as AI
+    ['Symbolic AI (traditional automation)', 'AI', 25], // # 50% classified as AI
     ['ANI Artificial Narrow Intelligence', 'AI', 40],
     ['Generative AI', 'AI', 15],
     ['Robotics', 'AI', 10],
@@ -67,14 +80,22 @@
     ['ML', 'Robotics', 5],
     ['ML', 'Computer vision', 7]
 ]
-    google.charts.load("current", {packages:["sankey"]});
-    google.charts.setOnLoadCallback(drawChart);
+
     function drawChart() {
+      var selectedFlow = document.getElementById('flowSelect').value;
       var data = new google.visualization.DataTable();
       data.addColumn('string', 'From');
       data.addColumn('string', 'To');
       data.addColumn('number', 'Weight');
-      data.addRows(current_use_flows);
+
+      if (selectedFlow === 'current_use_flows') {
+        data.addRows(current_use_flows);
+      } else if (selectedFlow === 'research_funding_flows') {
+        data.addRows(research_funding_flows);
+      } else if (selectedFlow === 'market_share_flows') {
+        data.addRows(market_share_flows);
+      }
+
       var colors = [
         '#aec7e8', '#ffbb78', '#98df8a', '#ff9896', '#c5b0d5', 
         '#c49c94', '#f7b6d2', '#c7c7c7', '#dbdb8d', '#9edae5',
@@ -82,14 +103,21 @@
         '#bcbd22', '#17becf', '#9467bd', '#d62728', '#2ca02c',
         '#ff7f0e', '#1f77b4'
       ];
-      // Set chart options
+
       var options = {
         width: 1500,
         height: 1000,
         sankey: {
           node: {
-            nodePadding: 40, // Adjusted node padding
-            colors: colors
+            nodePadding: 40,
+            colors: colors,
+            label: {
+              fontSize: 16,
+              fontName: 'Arial',
+              bold: true,
+              italic: false,
+              color: '#000000'
+            }
           },
           link: {
             colorMode: 'gradient',
@@ -97,8 +125,6 @@
           }
         }
       };
-
-      // Instantiate and draw our chart, passing in some options.
       var chart = new google.visualization.Sankey(document.getElementById('sankey_multiple'));
       chart.draw(data, options);
     }
