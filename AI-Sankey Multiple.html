@@ -19,37 +19,40 @@
     google.charts.setOnLoadCallback(drawChart);
 
     current_use_flows = [
-    ['Symbolic AI (Rules based)', 'Traditional automation', 30],
-    ['Symbolic AI (Rules based)', 'Artificial Intelligence (AI)', 30], // # 50% classified as AI
-    ['Generative AI', 'Artificial Intelligence (AI)', 10],
-    ['Robotics', 'Artificial Intelligence (AI)', 5],
-    ['Computer vision', 'Artificial Intelligence (AI)', 10],
-    ['AGI Artificial general Intelligence', 'Artificial Intelligence (AI)', 1],
-    ['ASI Super Intelligence', 'Artificial Intelligence (AI)', 0.5],
-    ['ML', 'Artificial Intelligence (AI)', 70],
-    ['Deep learning', 'ML', 40],
-    ['Reinforcement learning', 'ML', 10],
-    ['Probabilistic methods', 'ML', 5],
-    ['Evolutionary algorithms', 'ML', 5],
-    ['ML', 'AGI Artificial general Intelligence', 2],
-    ['ML', 'ASI Super Intelligence', 1],
-    ['ML', 'Generative AI', 10],
-    ['ML', 'Robotics', 5],
-    ['ML', 'Computer vision', 7],
-    ['ANI Artificial Narrow Intelligence', 'Artificial Intelligence (AI)', 30]
+    ['Symbolic AI (traditional automation)', 'Non AI', 30.0],
+    ['Symbolic AI (traditional automation)', 'AI', 30.0],
+    ['ANI Artificial Narrow Intelligence', 'AI', 9.0],  // Non-ML ANI
+    ['ML', 'ANI Artificial Narrow Intelligence', 21.0],  // ML-driven ANI
+    ['Generative AI', 'AI', 10.0],
+    ['Robotics', 'AI', 5.0],
+    ['Computer vision', 'AI', 7.0],
+    ['AGI Artificial general Intelligence', 'AI', 0.5],
+    ['ASI Super Intelligence', 'AI', 0.25],
+    ['ML', 'AI', 44.21],
+    ['Deep learning', 'ML', 40.0],
+    ['Reinforcement learning', 'ML', 10.0],
+    ['Probabilistic methods', 'ML', 5.0],
+    ['Evolutionary algorithms', 'ML', 5.0],
+    ['ML', 'AGI Artificial general Intelligence', 1.26],
+    ['ML', 'ASI Super Intelligence', 0.63],
+    ['ML', 'Generative AI', 6.32],
+    ['ML', 'Robotics', 3.16],
+    ['ML', 'Computer vision', 4.42]
+
 
 ]
 
  research_funding_flows = [
-    ['Symbolic AI (Rules based)', 'Traditional automation', 5],
-    ['Symbolic AI (Rules based)', 'Artificial Intelligence (AI)', 5],  //# 50% classified as AI
-    ['ANI Artificial Narrow Intelligence', 'Artificial Intelligence (AI)', 20],
-    ['Generative AI', 'Artificial Intelligence (AI)', 30],
-    ['Robotics', 'Artificial Intelligence (AI)', 15],
-    ['Computer vision', 'Artificial Intelligence (AI)', 15],
-    ['AGI Artificial general Intelligence', 'Artificial Intelligence (AI)', 10],
-    ['ASI Super Intelligence', 'Artificial Intelligence (AI)', 1],
-    ['ML', 'Artificial Intelligence (AI)', 80],
+ ['Symbolic AI (traditional automation)', 'Non AI', 5],
+    ['Symbolic AI (traditional automation)', 'AI', 5],
+    ['ANI Artificial Narrow Intelligence', 'AI', 6.0],  // Non-ML ANI
+    ['ML', 'ANI Artificial Narrow Intelligence', 14.0],  // ML-driven ANI
+    ['Generative AI', 'AI', 30],
+    ['Robotics', 'AI', 15],
+    ['Computer vision', 'AI', 15],
+    ['AGI Artificial general Intelligence', 'AI', 10],
+    ['ASI Super Intelligence', 'AI', 1],
+    ['ML', 'AI', 80],
     ['Deep learning', 'ML', 50],
     ['Reinforcement learning', 'ML', 15],
     ['Probabilistic methods', 'ML', 5],
@@ -62,24 +65,25 @@
 ]
 
 market_share_flows = [
-    ['Symbolic AI (traditional automation)', 'Traditional AI', 25],
-    ['Symbolic AI (traditional automation)', 'Artificial Intelligence (AI)', 25], // # 50% classified as AI
-    ['ANI Artificial Narrow Intelligence', 'Artificial Intelligence (AI)', 40],
-    ['Generative AI', 'Artificial Intelligence (AI)', 15],
-    ['Robotics', 'Artificial Intelligence (AI)', 10],
-    ['Computer vision', 'Artificial Intelligence (AI)', 15],
-    ['AGI Artificial general Intelligence', 'Artificial Intelligence (AI)', 0.5],
-    ['ASI Super Intelligence', 'Artificial Intelligence (AI)', 0.1],
-    ['ML', 'Artificial Intelligence (AI)', 70],
-    ['Deep learning', 'ML', 50],
-    ['Reinforcement learning', 'ML', 10],
-    ['Probabilistic methods', 'ML', 5],
-    ['Evolutionary algorithms', 'ML', 5],
-    ['ML', 'AGI Artificial general Intelligence', 2],
-    ['ML', 'ASI Super Intelligence', 1],
-    ['ML', 'Generative AI', 10],
-    ['ML', 'Robotics', 5],
-    ['ML', 'Computer vision', 7]
+['Symbolic AI (traditional automation)', 'Non AI', 25.0],
+    ['Symbolic AI (traditional automation)', 'AI', 25.0],
+    ['ANI Artificial Narrow Intelligence', 'AI', 12.0],  // Non-ML ANI
+    ['ML', 'ANI Artificial Narrow Intelligence', 28.0],  // ML-driven ANI
+    ['Generative AI', 'AI', 15.0],
+    ['Robotics', 'AI', 10.0],
+    ['Computer vision', 'AI', 15.0],
+    ['AGI Artificial general Intelligence', 'AI', 0.5],
+    ['ASI Super Intelligence', 'AI', 0.1],
+    ['ML', 'AI', 70.0],
+    ['Deep learning', 'ML', 50.0],
+    ['Reinforcement learning', 'ML', 10.0],
+    ['Probabilistic methods', 'ML', 5.0],
+    ['Evolutionary algorithms', 'ML', 5.0],
+    ['ML', 'AGI Artificial general Intelligence', 2.0],
+    ['ML', 'ASI Super Intelligence', 1.0],
+    ['ML', 'Generative AI', 10.0],
+    ['ML', 'Robotics', 5.0],
+    ['ML', 'Computer vision', 7.0]
 ]
 
     function drawChart() {
