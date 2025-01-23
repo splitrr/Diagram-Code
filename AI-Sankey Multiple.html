@@ -12,6 +12,7 @@
       <option value="research_funding_flows">Research Funding Flows</option>
       <option value="market_share_flows">Market Share Flows</option>
     </select>
+    <button onclick="exportChart()">Export to PNG</button>
   </div>
   <div id="sankey_multiple" style="width: 900px; height: 300px;"></div>
   <script type="text/javascript">
@@ -43,7 +44,11 @@
     ['ML', 'Computer vision', 7.0],
     ['Legacy Rules-Based Systems', 'Robotics', 2.0],
     ['Legacy Rules-Based Systems', 'Computer vision', 1.0],
-    ['Legacy Rules-Based Systems', 'Generative AI', 0.7]
+    ['Legacy Rules-Based Systems', 'Generative AI', 0.7],
+    ['Supervised Learning', 'ML', 60.0],
+    ['Unsupervised Learning', 'ML', 25.0],
+    ['Semi-Supervised Learning', 'ML', 10.0],
+    ['Reinforcement Learning', 'ML', 5.0]
 ];
 
 research_funding_flows = [
@@ -66,7 +71,11 @@ research_funding_flows = [
     ['ML', 'ASI Super Intelligence', 1.0],
     ['ML', 'Generative AI', 10.0],
     ['ML', 'Robotics', 5.0],
-    ['ML', 'Computer vision', 7.0]
+    ['ML', 'Computer vision', 7.0],
+    ['Supervised Learning', 'ML', 50.0],
+    ['Unsupervised Learning', 'ML', 20.0],
+    ['Semi-Supervised Learning', 'ML', 15.0],
+    ['Reinforcement Learning', 'ML', 15.0]
 ];
 
 market_share_flows = [
@@ -89,9 +98,13 @@ market_share_flows = [
     ['ML', 'ASI Super Intelligence', 1.0],
     ['ML', 'Generative AI', 10.0],
     ['ML', 'Robotics', 5.0],
-    ['ML', 'Computer vision', 7.0]
-];
-
+    ['ML', 'Computer vision', 7.0],
+    ['Supervised Learning', 'ML', 55.0],
+    ['Unsupervised Learning', 'ML', 25.0],
+    ['Semi-Supervised Learning', 'ML', 10.0],
+    ['Reinforcement Learning', 'ML', 10.0]
+];  
+    var chart;
     function drawChart() {
       var selectedFlow = document.getElementById('flowSelect').value;
       var data = new google.visualization.DataTable();
@@ -108,11 +121,11 @@ market_share_flows = [
       }
       //4
       var colors = [
-  '#66c2a5', '#fc8d62', '#8da0cb', '#e78ac3', '#a6d854',
-  '#ffd92f', '#e5c494', '#b3b3b3', '#1b9e77', '#d95f02',
-  '#7570b3', '#e7298a', '#66a61e', '#e6ab02', '#a6761d',
-  '#666666', '#f4a582', '#92c5de', '#d73027', '#4575b4'
-];
+        '#66c2a5', '#fc8d62', '#8da0cb', '#e78ac3', '#a6d854',
+        '#ffd92f', '#e5c494', '#b3b3b3', '#1b9e77', '#d95f02',
+        '#7570b3', '#e7298a', '#66a61e', '#e6ab02', '#a6761d',
+        '#666666', '#f4a582', '#92c5de', '#d73027', '#4575b4'
+      ];
       var options = {
         width: 1500,
         height: 750,
@@ -136,8 +149,17 @@ market_share_flows = [
           }
         }
       };
-      var chart = new google.visualization.Sankey(document.getElementById('sankey_multiple'));
+      chart = new google.visualization.Sankey(document.getElementById('sankey_multiple'));
       chart.draw(data, options);
+
+    }
+    function exportChart() {
+      html2canvas(document.getElementById('sankey_multiple')).then(function(canvas) {
+        var link = document.createElement('a');
+        link.href = canvas.toDataURL('image/png');
+        link.download = 'sankey_chart.png';
+        link.click();
+      });
     }
   </script>
 </body>
