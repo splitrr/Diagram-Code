@@ -5,6 +5,17 @@
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    .spacer {
+      height: 70px; /* Adjust the height as needed */
+    }
+    #sankey_multiple {
+  
+      padding-left: 20px; /* Add padding to the right */
+      padding-right: 20px; /* Add padding to the right */
+
+    }
+  </style>
 </head>
 <body>
   <div>
@@ -16,7 +27,11 @@
     </select>
     <button onclick="exportChart()">Export to PNG</button>
   </div>
-  <div id="sankey_multiple" style="width: 1500px; height: 750px;"></div>
+  
+  <!-- Spacer -->
+  <div class="spacer"></div>
+  
+  <div id="sankey_multiple"></div>
   <script type="text/javascript">
     google.charts.load("current", {packages:["sankey"]});
     google.charts.setOnLoadCallback(drawChart);
