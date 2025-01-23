@@ -19,9 +19,7 @@
     google.charts.setOnLoadCallback(drawChart);
 
     current_use_flows = [
-    
-    ['Legacy Rules based systems', 'Symbolic AI', 30.0],
-    
+    ['Legacy Rules-Based Systems', 'Symbolic AI', 40.0], // Increased to reflect legacy prevalence
     ['External Knowledge Sources', 'Generative AI', 1.05],
     ['External Knowledge Sources', 'Computer vision', 0.385],
     ['Generative AI', 'AI', 10.0],
@@ -29,12 +27,12 @@
     ['Computer vision', 'AI', 10.0],
     ['AGI Artificial general Intelligence', 'AI', 1.0],
     ['ASI Super Intelligence', 'AI', 0.5],
-    ['ML', 'AI', 70.0],
-    ['ML', 'ANI Artificial Narrow Intelligence', 21.0],
-    ['Legacy Rules based systems', 'ANI Artificial Narrow Intelligence', 9.0],
-    ['ANI Artificial Narrow Intelligence', 'AI', 21.0],
-    ['ANI Artificial Narrow Intelligence', 'Symbolic AI', 9.0],
-    ['Deep learning', 'ML', 40.0],
+    ['ML', 'AI', 60.0], // Reduced to reflect higher symbolic AI presence
+    ['ML', 'ANI Artificial Narrow Intelligence', 18.0],
+    ['Legacy Rules-Based Systems', 'ANI Artificial Narrow Intelligence', 12.0],
+    ['ANI Artificial Narrow Intelligence', 'AI', 18.0],
+    ['ANI Artificial Narrow Intelligence', 'Symbolic AI', 12.0],
+    ['Deep learning', 'ML', 35.0],
     ['Reinforcement learning', 'ML', 10.0],
     ['Probabilistic methods', 'ML', 5.0],
     ['Evolutionary algorithms', 'ML', 5.0],
@@ -43,28 +41,23 @@
     ['ML', 'Generative AI', 10.0],
     ['ML', 'Robotics', 5.0],
     ['ML', 'Computer vision', 7.0],
-    ['Legacy Rules based systems', 'Robotics', 1.0],
-    ['Legacy Rules based systems', 'Computer vision', 0.7],
-    ['Legacy Rules based systems', 'Generative AI', 0.5],
-    ['Legacy Rules based systems', 'Robotics', 0.6],
-    ['Legacy Rules based systems', 'Computer vision', 0.385],
-    ['Legacy Rules based systems', 'Generative AI', 0.21],
+    ['Legacy Rules-Based Systems', 'Robotics', 2.0],
+    ['Legacy Rules-Based Systems', 'Computer vision', 1.0],
+    ['Legacy Rules-Based Systems', 'Generative AI', 0.7]
+];
 
-]
-
- research_funding_flows = [
- ['Legacy Rules based systems', 'Symbolic AI', 5.0],
-    
+research_funding_flows = [
+    ['Legacy Rules-Based Systems', 'Symbolic AI', 5.0], // Smaller due to lower funding allocation
     ['Generative AI', 'AI', 30.0],
     ['Robotics', 'AI', 15.0],
     ['Computer vision', 'AI', 15.0],
     ['AGI Artificial general Intelligence', 'AI', 10.0],
     ['ASI Super Intelligence', 'AI', 1.0],
-    ['ML', 'AI', 80.0],
+    ['ML', 'AI', 80.0], // Dominates funding
     ['ML', 'ANI Artificial Narrow Intelligence', 14.0],
-    ['Legacy Rules based systems', 'ANI Artificial Narrow Intelligence', 6.0],
+    ['Legacy Rules-Based Systems', 'ANI Artificial Narrow Intelligence', 4.0],
     ['ANI Artificial Narrow Intelligence', 'AI', 14.0],
-    ['ANI Artificial Narrow Intelligence', 'Symbolic AI', 6.0],
+    ['ANI Artificial Narrow Intelligence', 'Symbolic AI', 4.0],
     ['Deep learning', 'ML', 50.0],
     ['Reinforcement learning', 'ML', 15.0],
     ['Probabilistic methods', 'ML', 5.0],
@@ -73,30 +66,21 @@
     ['ML', 'ASI Super Intelligence', 1.0],
     ['ML', 'Generative AI', 10.0],
     ['ML', 'Robotics', 5.0],
-    ['ML', 'Computer vision', 7.0],
-    ['Legacy Rules based systems', 'Robotics', 1.0],
-    ['Legacy Rules based systems', 'Computer vision', 0.7],
-    ['Legacy Rules based systems', 'Generative AI', 0.5],
-    ['Traditional Automation', 'Robotics', 0.6],
-    ['Traditional Automation', 'Computer vision', 0.385],
-    ['Traditional Automation', 'Generative AI', 0.21],
-    ['External Knowledge Sources', 'Generative AI', 1.05],
-    ['External Knowledge Sources', 'Computer vision', 0.385]
-]
+    ['ML', 'Computer vision', 7.0]
+];
 
 market_share_flows = [
-['Legacy Rules based systems', 'Symbolic AI', 25.0],
-
+    ['Legacy Rules-Based Systems', 'Symbolic AI', 30.0], // Reflects legacy systems' contribution
     ['Generative AI', 'AI', 15.0],
     ['Robotics', 'AI', 10.0],
     ['Computer vision', 'AI', 15.0],
     ['AGI Artificial general Intelligence', 'AI', 0.5],
     ['ASI Super Intelligence', 'AI', 0.1],
     ['ML', 'AI', 70.0],
-    ['ML', 'ANI Artificial Narrow Intelligence', 28.0],
-    ['Legacy Rules based systems', 'ANI Artificial Narrow Intelligence', 12.0],
-    ['ANI Artificial Narrow Intelligence', 'AI', 28.0],
-    ['ANI Artificial Narrow Intelligence', 'Symbolic AI', 12.0],
+    ['ML', 'ANI Artificial Narrow Intelligence', 20.0],
+    ['Legacy Rules-Based Systems', 'ANI Artificial Narrow Intelligence', 10.0],
+    ['ANI Artificial Narrow Intelligence', 'AI', 20.0],
+    ['ANI Artificial Narrow Intelligence', 'Symbolic AI', 10.0],
     ['Deep learning', 'ML', 50.0],
     ['Reinforcement learning', 'ML', 10.0],
     ['Probabilistic methods', 'ML', 5.0],
@@ -105,16 +89,8 @@ market_share_flows = [
     ['ML', 'ASI Super Intelligence', 1.0],
     ['ML', 'Generative AI', 10.0],
     ['ML', 'Robotics', 5.0],
-    ['ML', 'Computer vision', 7.0],
-    ['Legacy Rules based systems', 'Robotics', 1.0],
-    ['Legacy Rules based systems', 'Computer vision', 0.7],
-    ['Legacy Rules based systems', 'Generative AI', 0.5],
-    ['Legacy Rules based systems', 'Robotics', 0.6],
-    ['Legacy Rules based systems', 'Computer vision', 0.385],
-    ['Legacy Rules based systems', 'Generative AI', 0.21],
-    ['External Knowledge Sources', 'Generative AI', 1.05],
-    ['External Knowledge Sources', 'Computer vision', 0.385]
-]
+    ['ML', 'Computer vision', 7.0]
+];
 
     function drawChart() {
       var selectedFlow = document.getElementById('flowSelect').value;
@@ -130,16 +106,13 @@ market_share_flows = [
       } else if (selectedFlow === 'market_share_flows') {
         data.addRows(market_share_flows);
       }
-//All Different COlours
+      //4
       var colors = [
-  '#e41a1c', '#377eb8', '#4daf4a', '#984ea3', '#ff7f00',
-  '#ffff33', '#a65628', '#f781bf', '#999999', '#66c2a5',
-  '#fc8d62', '#8da0cb', '#e78ac3', '#a6d854', '#ffd92f',
-  '#e5c494', '#b3b3b3', '#1b9e77', '#d95f02', '#7570b3'
+  '#66c2a5', '#fc8d62', '#8da0cb', '#e78ac3', '#a6d854',
+  '#ffd92f', '#e5c494', '#b3b3b3', '#1b9e77', '#d95f02',
+  '#7570b3', '#e7298a', '#66a61e', '#e6ab02', '#a6761d',
+  '#666666', '#f4a582', '#92c5de', '#d73027', '#4575b4'
 ];
-
-
-
       var options = {
         width: 1500,
         height: 750,
