@@ -21,8 +21,7 @@
     current_use_flows = [
     
     ['Symbolic AI (traditional automation)', 'Non AI', 30.0],
-    ['ML', 'ANI Artificial Narrow Intelligence', 21.0],
-    ['Symbolic AI (traditional automation)', 'ANI Artificial Narrow Intelligence', 9.0],
+    
     ['External Knowledge Sources', 'Generative AI', 1.05],
     ['External Knowledge Sources', 'Computer vision', 0.385],
     ['Generative AI', 'AI', 10.0],
@@ -31,6 +30,10 @@
     ['AGI Artificial general Intelligence', 'AI', 1.0],
     ['ASI Super Intelligence', 'AI', 0.5],
     ['ML', 'AI', 70.0],
+    ['ML', 'ANI Artificial Narrow Intelligence', 21.0],
+    ['Symbolic AI (traditional automation)', 'ANI Artificial Narrow Intelligence', 9.0],
+    ['ANI Artificial Narrow Intelligence', 'AI', 21.0],
+    ['ANI Artificial Narrow Intelligence', 'Non AI', 9.0],
     ['Deep learning', 'ML', 40.0],
     ['Reinforcement learning', 'ML', 10.0],
     ['Probabilistic methods', 'ML', 5.0],
@@ -45,22 +48,23 @@
     ['Symbolic AI (traditional automation)', 'Generative AI', 0.5],
     ['Symbolic AI (traditional automation)', 'Robotics', 0.6],
     ['Symbolic AI (traditional automation)', 'Computer vision', 0.385],
-    
     ['Symbolic AI (traditional automation)', 'Generative AI', 0.21],
 
 ]
 
  research_funding_flows = [
  ['Symbolic AI (traditional automation)', 'Non AI', 5.0],
- ['Symbolic AI (traditional automation)', 'Non AI', 5.0],
-    ['ML', 'ANI Artificial Narrow Intelligence', 14.0],
-    ['Symbolic AI (traditional automation)', 'ANI Artificial Narrow Intelligence', 6.0],
+    
     ['Generative AI', 'AI', 30.0],
     ['Robotics', 'AI', 15.0],
     ['Computer vision', 'AI', 15.0],
     ['AGI Artificial general Intelligence', 'AI', 10.0],
     ['ASI Super Intelligence', 'AI', 1.0],
     ['ML', 'AI', 80.0],
+    ['ML', 'ANI Artificial Narrow Intelligence', 14.0],
+    ['Symbolic AI (traditional automation)', 'ANI Artificial Narrow Intelligence', 6.0],
+    ['ANI Artificial Narrow Intelligence', 'AI', 14.0],
+    ['ANI Artificial Narrow Intelligence', 'Non AI', 6.0],
     ['Deep learning', 'ML', 50.0],
     ['Reinforcement learning', 'ML', 15.0],
     ['Probabilistic methods', 'ML', 5.0],
@@ -73,24 +77,26 @@
     ['Symbolic AI (traditional automation)', 'Robotics', 1.0],
     ['Symbolic AI (traditional automation)', 'Computer vision', 0.7],
     ['Symbolic AI (traditional automation)', 'Generative AI', 0.5],
-    ['Symbolic AI (traditional automation)', 'Robotics', 0.6],
-    ['Symbolic AI (traditional automation)', 'Computer vision', 0.385],
-    ['Symbolic AI (traditional automation)', 'Generative AI', 0.21],
+    ['Traditional Automation', 'Robotics', 0.6],
+    ['Traditional Automation', 'Computer vision', 0.385],
+    ['Traditional Automation', 'Generative AI', 0.21],
     ['External Knowledge Sources', 'Generative AI', 1.05],
     ['External Knowledge Sources', 'Computer vision', 0.385]
 ]
 
 market_share_flows = [
 ['Symbolic AI (traditional automation)', 'Non AI', 25.0],
-['Symbolic AI (traditional automation)', 'Non AI', 25.0],
-    ['ML', 'ANI Artificial Narrow Intelligence', 28.0],
-    ['Symbolic AI (traditional automation)', 'ANI Artificial Narrow Intelligence', 12.0],
+
     ['Generative AI', 'AI', 15.0],
     ['Robotics', 'AI', 10.0],
     ['Computer vision', 'AI', 15.0],
     ['AGI Artificial general Intelligence', 'AI', 0.5],
     ['ASI Super Intelligence', 'AI', 0.1],
     ['ML', 'AI', 70.0],
+    ['ML', 'ANI Artificial Narrow Intelligence', 28.0],
+    ['Symbolic AI (traditional automation)', 'ANI Artificial Narrow Intelligence', 12.0],
+    ['ANI Artificial Narrow Intelligence', 'AI', 28.0],
+    ['ANI Artificial Narrow Intelligence', 'Non AI', 12.0],
     ['Deep learning', 'ML', 50.0],
     ['Reinforcement learning', 'ML', 10.0],
     ['Probabilistic methods', 'ML', 5.0],
@@ -141,12 +147,14 @@ market_share_flows = [
           node: {
             nodePadding: 20,
             colors: colors,
+            width: 13,
+
             label: {
-              fontSize: 16,
+              fontSize: 20,
               fontName: 'Arial',
               bold: true,
               italic: false,
-              color: '#000000'
+              color: '#000000',
             }
           },
           link: {
