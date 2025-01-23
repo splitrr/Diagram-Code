@@ -23,6 +23,8 @@
     ['Symbolic AI (traditional automation)', 'Non AI', 30.0],
     ['ML', 'ANI Artificial Narrow Intelligence', 21.0],
     ['Symbolic AI (traditional automation)', 'ANI Artificial Narrow Intelligence', 9.0],
+    ['External Knowledge Sources', 'Generative AI', 1.05],
+    ['External Knowledge Sources', 'Computer vision', 0.385],
     ['Generative AI', 'AI', 10.0],
     ['Robotics', 'AI', 5.0],
     ['Computer vision', 'AI', 10.0],
@@ -37,12 +39,19 @@
     ['ML', 'ASI Super Intelligence', 1.0],
     ['ML', 'Generative AI', 10.0],
     ['ML', 'Robotics', 5.0],
-    ['ML', 'Computer vision', 7.0]
-      // ML-driven ANI
+    ['ML', 'Computer vision', 7.0],
+    ['Symbolic AI (traditional automation)', 'Robotics', 1.0],
+    ['Symbolic AI (traditional automation)', 'Computer vision', 0.7],
+    ['Symbolic AI (traditional automation)', 'Generative AI', 0.5],
+    ['Symbolic AI (traditional automation)', 'Robotics', 0.6],
+    ['Symbolic AI (traditional automation)', 'Computer vision', 0.385],
+    
+    ['Symbolic AI (traditional automation)', 'Generative AI', 0.21],
 
 ]
 
  research_funding_flows = [
+ ['Symbolic AI (traditional automation)', 'Non AI', 5.0],
  ['Symbolic AI (traditional automation)', 'Non AI', 5.0],
     ['ML', 'ANI Artificial Narrow Intelligence', 14.0],
     ['Symbolic AI (traditional automation)', 'ANI Artificial Narrow Intelligence', 6.0],
@@ -60,10 +69,19 @@
     ['ML', 'ASI Super Intelligence', 1.0],
     ['ML', 'Generative AI', 10.0],
     ['ML', 'Robotics', 5.0],
-    ['ML', 'Computer vision', 7.0]
+    ['ML', 'Computer vision', 7.0],
+    ['Symbolic AI (traditional automation)', 'Robotics', 1.0],
+    ['Symbolic AI (traditional automation)', 'Computer vision', 0.7],
+    ['Symbolic AI (traditional automation)', 'Generative AI', 0.5],
+    ['Symbolic AI (traditional automation)', 'Robotics', 0.6],
+    ['Symbolic AI (traditional automation)', 'Computer vision', 0.385],
+    ['Symbolic AI (traditional automation)', 'Generative AI', 0.21],
+    ['External Knowledge Sources', 'Generative AI', 1.05],
+    ['External Knowledge Sources', 'Computer vision', 0.385]
 ]
 
 market_share_flows = [
+['Symbolic AI (traditional automation)', 'Non AI', 25.0],
 ['Symbolic AI (traditional automation)', 'Non AI', 25.0],
     ['ML', 'ANI Artificial Narrow Intelligence', 28.0],
     ['Symbolic AI (traditional automation)', 'ANI Artificial Narrow Intelligence', 12.0],
@@ -81,7 +99,15 @@ market_share_flows = [
     ['ML', 'ASI Super Intelligence', 1.0],
     ['ML', 'Generative AI', 10.0],
     ['ML', 'Robotics', 5.0],
-    ['ML', 'Computer vision', 7.0]
+    ['ML', 'Computer vision', 7.0],
+    ['Symbolic AI (traditional automation)', 'Robotics', 1.0],
+    ['Symbolic AI (traditional automation)', 'Computer vision', 0.7],
+    ['Symbolic AI (traditional automation)', 'Generative AI', 0.5],
+    ['Symbolic AI (traditional automation)', 'Robotics', 0.6],
+    ['Symbolic AI (traditional automation)', 'Computer vision', 0.385],
+    ['Symbolic AI (traditional automation)', 'Generative AI', 0.21],
+    ['External Knowledge Sources', 'Generative AI', 1.05],
+    ['External Knowledge Sources', 'Computer vision', 0.385]
 ]
 
     function drawChart() {
@@ -100,19 +126,20 @@ market_share_flows = [
       }
 
       var colors = [
-        '#aec7e8', '#ffbb78', '#98df8a', '#ff9896', '#c5b0d5', 
-        '#c49c94', '#f7b6d2', '#c7c7c7', '#dbdb8d', '#9edae5',
-        '#393b79', '#5254a3', '#8c564b', '#e377c2', '#7f7f7f',
-        '#bcbd22', '#17becf', '#9467bd', '#d62728', '#2ca02c',
-        '#ff7f0e', '#1f77b4'
-      ];
+   '#aec7e8', '#ffbb78',  '#ff7f0e', '#1f77b4', '#98df8a', '#ff9896', '#c5b0d5', 
+  '#c49c94', '#f7b6d2', '#c7c7c7', '#dbdb8d', '#9edae5',
+  '#393b79', '#5254a3', '#8c564b', '#e377c2', '#7f7f7f',
+  '#bcbd22', '#17becf', '#9467bd', '#d62728', '#2ca02c'
+];
+
+
 
       var options = {
         width: 1500,
         height: 750,
         sankey: {
           node: {
-            nodePadding: 5,
+            nodePadding: 20,
             colors: colors,
             label: {
               fontSize: 16,
