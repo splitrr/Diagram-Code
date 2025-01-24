@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI Flow Diagram</title>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -79,7 +81,7 @@
   <div class="container">
     <h1>AI method Hierarchy and relative importance</h1>
     <div class="controls">
-      <label for="flowSelect">Relative importance for:</label>
+      <label for="flowSelect">Relative importance by:</label>
       <select id="flowSelect" onchange="drawChart()">
         <option value="current_use_flows">Current Use</option>
         <option value="research_funding_flows">Research Funding</option>
@@ -93,6 +95,11 @@
     
     <div id="sankey_multiple"></div>
   </div>
+  
+  <footer style="text-align: center; margin-top: 20px;">
+    <p>&copy; 2025 Anthony West. All rights reserved.</p>
+  </footer>
+  
   <script type="text/javascript">
     google.charts.load("current", {packages:["sankey"]});
     google.charts.setOnLoadCallback(drawChart);
