@@ -73,7 +73,7 @@
     }
     #sankey_multiple {
       width: 100%; /* Use full width */
-      height: 600px; /* Default height */
+      height: 700px; /* Default height */
       border: 1px solid #ccc; /* Border color */
       border-radius: 10px; /* Rounded corners */
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow effect */
@@ -93,17 +93,17 @@
       --color1: #66c2a5;
       --color2: #fc8d62;
       --color3: #8da0cb;
-      --color4: #e78ac3;
+      --color4: #e9d137;
       --color5: #a6d854;
       --color6: #ffd92f;
-      --color7: #e5c494;
+      --color7: #11eb90;
       --color8: #b3b3b3;
       --color9: #1b9e77;
       --color10: #d95f02;
       --color11: #7570b3;
       --color12: #1d3be7;
       --color13: #66a61e;
-      --color14: #e6ab02;
+      --color14: #a673a8;
       --color15: #a6761d;
       --color16: #f0e6e6;
       --color17: #f4a582;
@@ -121,8 +121,8 @@
       <label for="flowSelect">Relative importance by:</label>
       <select id="flowSelect" onchange="drawChart()">
         <option value="research_funding_flows">Research Funding</option>
-        <option value="current_use_flows">Current Use</option>
         <option value="market_share_flows">Market Share</option>
+        <option value="current_use_flows">Current Use</option>
       </select>
       <!-- <button onclick="exportChart()">Export to PNG</button> -->
     </div>
@@ -180,36 +180,36 @@
     ];
 
     var research_funding_flows = [
-      ['Legacy Rules-Based Systems', 'Symbolic AI', 5.0],
-      ['Generative AI', 'AI', 30.0],
-      ['Robotics', 'AI', 15.0],
-      ['Computer vision', 'AI', 15.0],
-      ['AGI', 'AI', 10.0],
-      ['ASI', 'AI', 1.0],
-      ['ML', 'AI', 80.0],
-      ['ML', 'ANI', 14.0],
-      ['Legacy Rules-Based Systems', 'ANI', 4.0],
-      ['ANI', 'AI', 14.0],
-      ['ANI', 'Symbolic AI', 4.0],
-      ['Deep learning', 'ML', 50.0],
-      ['Probabilistic methods', 'ML', 5.0],
-      ['Evolutionary algorithms', 'ML', 5.0],
-      ['ML', 'AGI', 2.0],
-      ['ML', 'ASI', 1.0],
-      ['ML', 'Generative AI', 10.0],
-      ['ML', 'Robotics', 5.0],
-      ['ML', 'Computer vision', 7.0],
-      ['Supervised Learning', 'ML', 50.0],
-      ['Unsupervised Learning', 'ML', 20.0],
-      ['Semi-Supervised Learning', 'ML', 15.0],
-      ['Reinforcement Learning', 'ML', 15.0],
-      ['Supervised Learning', 'Deep learning', 25.0],
-      ['Unsupervised Learning', 'Deep learning', 15.0],
-      ['Semi-Supervised Learning', 'Deep learning', 7.5],
-      ['Reinforcement Learning', 'Deep learning', 7.5],
-      ['Probabilistic methods', 'Deep learning', 5.0],
-      ['Evolutionary algorithms', 'Deep learning', 3.0]
-    ];
+    ['Legacy Rules-Based Systems', 'Symbolic AI', 5.0],
+    ['Generative AI', 'AI', 40.0],
+    ['Robotics', 'AI', 15.0],
+    ['Computer vision', 'AI', 15.0],
+    ['AGI', 'AI', 12.0],
+    ['ASI', 'AI', 1.0],
+    ['ML', 'AI', 80.0],
+    ['ML', 'ANI', 14.0],
+    ['Legacy Rules-Based Systems', 'ANI', 4.0],
+    ['ANI', 'AI', 14.0],
+    ['ANI', 'Symbolic AI', 4.0],
+    ['Deep learning', 'ML', 50.0],
+    ['Probabilistic methods', 'ML', 5.0],
+    ['Evolutionary algorithms', 'ML', 5.0],
+    ['ML', 'AGI', 2.0],
+    ['ML', 'ASI', 1.0],
+    ['ML', 'Generative AI', 15.0],
+    ['ML', 'Robotics', 5.0],
+    ['ML', 'Computer vision', 7.0],
+    ['Supervised Learning', 'ML', 50.0],
+    ['Unsupervised Learning', 'ML', 20.0],
+    ['Semi-Supervised Learning', 'ML', 15.0],
+    ['Reinforcement Learning', 'ML', 15.0],
+    ['Supervised Learning', 'Deep learning', 25.0],
+    ['Unsupervised Learning', 'Deep learning', 15.0],
+    ['Semi-Supervised Learning', 'Deep learning', 7.5],
+    ['Reinforcement Learning', 'Deep learning', 7.5],
+    ['Probabilistic methods', 'Deep learning', 5.0],
+    ['Evolutionary algorithms', 'Deep learning', 3.0]
+];
 
     var market_share_flows = [
       ['Legacy Rules-Based Systems', 'Symbolic AI', 30.0],
@@ -244,6 +244,7 @@
     ];
 
     var chart;
+    var NodePadding
     function drawChart() {
       var selectedFlow = document.getElementById('flowSelect').value;
       var data = new google.visualization.DataTable();
@@ -253,11 +254,15 @@
 
       if (selectedFlow === 'current_use_flows') {
         data.addRows(current_use_flows);
+        nodePadding = 50;
       } else if (selectedFlow === 'research_funding_flows') {
         data.addRows(research_funding_flows);
+        nodePadding = 10;
       } else if (selectedFlow === 'market_share_flows') {
         data.addRows(market_share_flows);
+        nodePadding = 10;
       }
+
 
       var colors = [
         getComputedStyle(document.documentElement).getPropertyValue('--color1'),
@@ -293,7 +298,7 @@
         height: '100%',
         sankey: {
           node: {
-            nodePadding: 45,
+            nodePadding: nodePadding,
             colors: colors,
             width: 5,
             iterations: 100,
