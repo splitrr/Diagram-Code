@@ -20,7 +20,7 @@
     .container {
       width: 80%;
       max-width: 1200px;
-      margin: 20px auto;
+      margin: 10px auto;
       text-align: center;
     }
     h1 {
@@ -71,16 +71,16 @@
       height: 20px; /* Adjust the height as needed */
     }
     #sankey_multiple {
-      width: 100%; /* Full width */
-      max-width: 1200px; /* Maximum width to prevent it from getting too wide */
-      height: 600px; /* Adjusted height for better rendering */
-      border: 1px solid #ccc; /* Border color */
-      border-radius: 10px; /* Rounded corners */
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow effect */
-      overflow: hidden; /* Prevents overflow of content */
-      padding: 20px; /* Space between the border and the diagram */
-      margin: 20px; /* Space around the border */
-      background-color: #f9f9f9; /* Background color for the chart area */
+      width: calc(100% - 20px); 
+      max-width: 1200px; 
+      height: 600px; 
+      border: 1px solid #ccc; 
+      border-radius: 10px; 
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+      overflow: hidden; 
+      padding: 20px; 
+      margin: 0 auto; 
+      background-color: #f9f9f9;
     }
     :root {
       --color1: #66c2a5;
