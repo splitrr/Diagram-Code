@@ -82,6 +82,29 @@
       margin: 20px; /* Space around the border */
       background-color: #f9f9f9; /* Background color for the chart area */
     }
+    :root {
+      --color1: #66c2a5;
+      --color2: #fc8d62;
+      --color3: #8da0cb;
+      --color4: #e78ac3;
+      --color5: #a6d854;
+      --color6: #ffd92f;
+      --color7: #e5c494;
+      --color8: #b3b3b3;
+      --color9: #1b9e77;
+      --color10: #d95f02;
+      --color11: #7570b3;
+      --color12: #1d3be7;
+      --color13: #66a61e;
+      --color14: #e6ab02;
+      --color15: #a6761d;
+      --color16: #f0e6e6;
+      --color17: #f4a582;
+      --color18: #92c5de;
+      --color19: #d73027;
+      --color20: #4575b4;
+      /* Add more colors as needed */
+    }
   </style>
 </head>
 <body>
@@ -230,10 +253,32 @@
       }
 
       var colors = [
-        '#66c2a5', '#fc8d62', '#8da0cb', '#e78ac3', '#a6d854',
-        '#ffd92f', '#e5c494', '#b3b3b3', '#1b9e77', '#d95f02',
-        '#7570b3', '#e7298a', '#66a61e', '#e6ab02', '#a6761d',
-        '#666666', '#f4a582', '#92c5de', '#d73027', '#4575b4'
+        getComputedStyle(document.documentElement).getPropertyValue('--color1'),
+        getComputedStyle(document.documentElement).getPropertyValue('--color2'),
+        getComputedStyle(document.documentElement).getPropertyValue('--color3'),
+        getComputedStyle(document.documentElement).getPropertyValue('--color4'),
+        getComputedStyle(document.documentElement).getPropertyValue('--color5'),
+        getComputedStyle(document.documentElement).getPropertyValue('--color6'),
+        getComputedStyle(document.documentElement).getPropertyValue('--color7'),
+        getComputedStyle(document.documentElement).getPropertyValue('--color8'),
+        getComputedStyle(document.documentElement).getPropertyValue('--color9'),
+        getComputedStyle(document.documentElement).getPropertyValue('--color10'),
+        getComputedStyle(document.documentElement).getPropertyValue('--color11'),
+        getComputedStyle(document.documentElement).getPropertyValue('--color12'),
+        getComputedStyle(document.documentElement).getPropertyValue('--color13'),
+        getComputedStyle(document.documentElement).getPropertyValue('--color14'),
+        getComputedStyle(document.documentElement).getPropertyValue('--color15'),
+        getComputedStyle(document.documentElement).getPropertyValue('--color16'),
+        getComputedStyle(document.documentElement).getPropertyValue('--color17'),
+        getComputedStyle(document.documentElement).getPropertyValue('--color18'),
+        getComputedStyle(document.documentElement).getPropertyValue('--color19'),
+        getComputedStyle(document.documentElement).getPropertyValue('--color20'),
+      //   var colors = [
+      //   '#66c2a5', '#fc8d62', '#8da0cb', '#e78ac3', '#a6d854',
+      //   '#ffd92f', '#e5c494', '#b3b3b3', '#1b9e77', '#d95f02',
+      //   '#7570b3', '#e7298a', '#66a61e', '#e6ab02', '#a6761d',
+      //   '#666666', '#f4a582', '#92c5de', '#d73027', '#4575b4'
+      // ];
       ];
 
       var options = {
