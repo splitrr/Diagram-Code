@@ -77,15 +77,15 @@
 </head>
 <body>
   <div class="container">
-    <h1>AI Flow Diagram</h1>
+    <h1>AI method Hierarchy and relative importance</h1>
     <div class="controls">
-      <label for="flowSelect">Select Flow:</label>
+      <label for="flowSelect">Relative importance for:</label>
       <select id="flowSelect" onchange="drawChart()">
-        <option value="current_use_flows">Current Use Flows</option>
-        <option value="research_funding_flows">Research Funding Flows</option>
-        <option value="market_share_flows">Market Share Flows</option>
+        <option value="current_use_flows">Current Use</option>
+        <option value="research_funding_flows">Research Funding</option>
+        <option value="market_share_flows">Market Share</option>
       </select>
-      <button onclick="exportChart()">Export to PNG</button>
+      <!-- <button onclick="exportChart()">Export to PNG</button> -->
     </div>
     
     <!-- Spacer -->
