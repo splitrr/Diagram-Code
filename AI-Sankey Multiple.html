@@ -72,16 +72,22 @@
       height: 20px; /* Adjust the height as needed */
     }
     #sankey_multiple {
-      width: calc(100% - 20px); 
-      max-width: 1200px; 
-      height: 600px; 
-      border: 1px solid #ccc; 
-      border-radius: 10px; 
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
-      overflow: hidden; 
-      padding: 20px; 
-      margin: 0 auto; 
-      background-color: #f9f9f9;
+      width: 100%; /* Use full width */
+      height: 600px; /* Default height */
+      border: 1px solid #ccc; /* Border color */
+      border-radius: 10px; /* Rounded corners */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow effect */
+      overflow: hidden; /* Prevents overflow of content */
+      padding: 20px; /* Space between the border and the diagram */
+      margin: 0; /* Remove all margins */
+      background-color: #f9f9f9; /* Background color for the chart area */
+    }
+    /* Media query for mobile devices */
+    @media (max-width: 768px) {
+      #sankey_multiple {
+        height: 400px; /* Adjust height for smaller screens */
+        padding: 10px; /* Reduce padding */
+      }
     }
     :root {
       --color1: #66c2a5;
@@ -114,8 +120,8 @@
     <div class="controls">
       <label for="flowSelect">Relative importance by:</label>
       <select id="flowSelect" onchange="drawChart()">
-        <option value="current_use_flows">Current Use</option>
         <option value="research_funding_flows">Research Funding</option>
+        <option value="current_use_flows">Current Use</option>
         <option value="market_share_flows">Market Share</option>
       </select>
       <!-- <button onclick="exportChart()">Export to PNG</button> -->
@@ -142,18 +148,18 @@
       ['Generative AI', 'AI', 10.0],
       ['Robotics', 'AI', 5.0],
       ['Computer vision', 'AI', 10.0],
-      ['Artificial general Intelligence (AGI)', 'AI', 1.0],
-      ['Artificial Super Intelligence (ASI)', 'AI', 0.5],
+      ['AGI', 'AI', 1.0],
+      ['ASI', 'AI', 0.5],
       ['ML', 'AI', 60.0],
-      ['ML', 'ANI (Narrow Intelligence)', 18.0],
-      ['Legacy Rules-Based Systems', 'ANI (Narrow Intelligence)', 12.0],
-      ['ANI (Narrow Intelligence)', 'AI', 18.0],
-      ['ANI (Narrow Intelligence)', 'Symbolic AI', 12.0],
+      ['ML', 'ANI', 18.0],
+      ['Legacy Rules-Based Systems', 'ANI', 12.0],
+      ['ANI', 'AI', 18.0],
+      ['ANI', 'Symbolic AI', 12.0],
       ['Deep learning', 'ML', 35.0],
       ['Probabilistic methods', 'ML', 5.0],
       ['Evolutionary algorithms', 'ML', 5.0],
-      ['ML', 'Artificial general Intelligence (AGI)', 2.0],
-      ['ML', 'Artificial Super Intelligence (ASI)', 1.0],
+      ['ML', 'AGI', 2.0],
+      ['ML', 'ASI', 1.0],
       ['ML', 'Generative AI', 10.0],
       ['ML', 'Robotics', 5.0],
       ['ML', 'Computer vision', 7.0],
@@ -178,18 +184,18 @@
       ['Generative AI', 'AI', 30.0],
       ['Robotics', 'AI', 15.0],
       ['Computer vision', 'AI', 15.0],
-      ['Artificial general Intelligence (AGI)', 'AI', 10.0],
-      ['Artificial Super Intelligence (ASI)', 'AI', 1.0],
+      ['AGI', 'AI', 10.0],
+      ['ASI', 'AI', 1.0],
       ['ML', 'AI', 80.0],
-      ['ML', 'ANI (Narrow Intelligence)', 14.0],
-      ['Legacy Rules-Based Systems', 'ANI (Narrow Intelligence)', 4.0],
-      ['ANI (Narrow Intelligence)', 'AI', 14.0],
-      ['ANI (Narrow Intelligence)', 'Symbolic AI', 4.0],
+      ['ML', 'ANI', 14.0],
+      ['Legacy Rules-Based Systems', 'ANI', 4.0],
+      ['ANI', 'AI', 14.0],
+      ['ANI', 'Symbolic AI', 4.0],
       ['Deep learning', 'ML', 50.0],
       ['Probabilistic methods', 'ML', 5.0],
       ['Evolutionary algorithms', 'ML', 5.0],
-      ['ML', 'Artificial general Intelligence (AGI)', 2.0],
-      ['ML', 'Artificial Super Intelligence (ASI)', 1.0],
+      ['ML', 'AGI', 2.0],
+      ['ML', 'ASI', 1.0],
       ['ML', 'Generative AI', 10.0],
       ['ML', 'Robotics', 5.0],
       ['ML', 'Computer vision', 7.0],
@@ -210,18 +216,18 @@
       ['Generative AI', 'AI', 15.0],
       ['Robotics', 'AI', 10.0],
       ['Computer vision', 'AI', 15.0],
-      ['Artificial general Intelligence (AGI)', 'AI', 0.5],
-      ['Artificial Super Intelligence (ASI)', 'AI', 0.1],
+      ['AGI', 'AI', 0.5],
+      ['ASI', 'AI', 0.1],
       ['ML', 'AI', 70.0],
-      ['ML', 'ANI (Narrow Intelligence)', 20.0],
-      ['Legacy Rules-Based Systems', 'ANI (Narrow Intelligence)', 10.0],
-      ['ANI (Narrow Intelligence)', 'AI', 20.0],
-      ['ANI (Narrow Intelligence)', 'Symbolic AI', 10.0],
+      ['ML', 'ANI', 20.0],
+      ['Legacy Rules-Based Systems', 'ANI', 10.0],
+      ['ANI', 'AI', 20.0],
+      ['ANI', 'Symbolic AI', 10.0],
       ['Deep learning', 'ML', 50.0],
       ['Probabilistic methods', 'ML', 5.0],
       ['Evolutionary algorithms', 'ML', 5.0],
-      ['ML', 'Artificial general Intelligence (AGI)', 2.0],
-      ['ML', 'Artificial Super Intelligence (ASI)', 1.0],
+      ['ML', 'AGI', 2.0],
+      ['ML', 'ASI', 1.0],
       ['ML', 'Generative AI', 10.0],
       ['ML', 'Robotics', 5.0],
       ['ML', 'Computer vision', 7.0],
