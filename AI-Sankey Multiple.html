@@ -125,6 +125,7 @@
         <option value="research_funding_flows">Research Funding</option>
         <option value="market_share_flows">Market Share</option>
         <option value="current_use_flows">Current Use</option>
+
       </select>
       <!-- <button onclick="exportChart()">Export to PNG</button> -->
     </div>
@@ -180,7 +181,6 @@
       ['Evolutionary algorithms', 'Deep learning', 3.0],
       ['External Knowledge Sources', 'Deep learning', 2.0]
     ];
-
     var research_funding_flows = [
     ['Rules-Based Systems', 'Symbolic AI', 5.0],
     ['Generative AI', 'AI', 40.0],
@@ -212,7 +212,6 @@
     ['Probabilistic methods', 'Deep learning', 5.0],
     ['Evolutionary algorithms', 'Deep learning', 3.0]
 ];
-
     var market_share_flows = [
       ['Rules-Based Systems', 'Symbolic AI', 30.0],
       ['Generative AI', 'AI', 15.0],
@@ -244,9 +243,11 @@
       ['Probabilistic methods', 'Deep learning', 5.0],
       ['Evolutionary algorithms', 'Deep learning', 2.5]
     ];
-
+    
+    
     var chart;
     var NodePadding
+    var flowFontSize = 20
     function drawChart() {
       var selectedFlow = document.getElementById('flowSelect').value;
       var data = new google.visualization.DataTable();
@@ -263,8 +264,10 @@
       } else if (selectedFlow === 'market_share_flows') {
         data.addRows(market_share_flows);
         nodePadding = 10;
+      } else if (selectedFlow === 'biological_influence_flows') {
+        data.addRows(biological_influence_flows);
+        nodePadding = 10;
       }
-
 
       var colors = [
         getComputedStyle(document.documentElement).getPropertyValue('--color1'),
@@ -299,7 +302,7 @@
             width: 5,
             iterations: 100,
             label: {
-              fontSize: 20,
+              fontSize: flowFontSize,
               fontName: 'Lato',
               bold: false,
               italic: false,

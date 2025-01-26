@@ -4,15 +4,28 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        
-
+        // {
+        //     "type": "chrome",
+        //     "request": "launch",
+        //     "name": "Launch Chrome against localhost",
+        //     "url": "http://localhost:8080",
+        //     "webRoot": "${workspaceFolder}"
+        // },
         {
             "type": "chrome",
             "request": "launch",
             "name": "Launch Chrome against localhost",
-            "url": "http://localhost:8080",
-            "webRoot": "${workspaceFolder}"
-        }
+            "url": "http://localhost:5500", // Change to your file
+            "webRoot": "${workspaceFolder}",
+            "skipFiles": [
+                "<node_internals>/**", // Skip Node.js internal files
+                "**/node_modules/**",   // Skip all files in node_modules
+                "**/external/**",        // Skip any external libraries
+                "**/*.min.js",           // Skip minified JavaScript files
+                "**/loader.js",   //Skip Google chats loader
+                "**/charts/loader.js"
+              ]
+          }
         
     ]
 }
