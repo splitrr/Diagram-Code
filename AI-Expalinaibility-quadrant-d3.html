@@ -15,7 +15,7 @@
       margin: auto;
       width: 100%;
       height: auto;
-      viewBox: 0 0 800 600;
+      viewBox: 0 0 1000 700; /* Increased viewBox for callouts */
       preserveAspectRatio: xMidYMid meet;
     }
     .quadrant-line {
@@ -27,10 +27,11 @@
       stroke: black;
       stroke-width: 1px;
       cursor: pointer; /* Change cursor to pointer on hover */
+      filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.3)); /* Adds a subtle shadow */
     }
     .label {
       font-size: 12px;
-      text-anchor: middle;
+      text-anchor: start;
     }
     .tooltip {
       position: absolute;
@@ -39,12 +40,22 @@
       height: auto;
       padding: 8px;
       font: 12px sans-serif;
-      background: lightsteelblue;
+      background: rgba(173, 216, 230, 0.9); /* Lightsteelblue with slight transparency */
       border: 1px solid #333;
       border-radius: 8px;
       pointer-events: none;
       z-index: 10; /* Ensure tooltip is on top */
       visibility: hidden; /* Hidden by default */
+    }
+    .callout-line {
+      stroke: #999;
+      stroke-width: 1px;
+      fill: none;
+      stroke-dasharray: 2,2;
+    }
+    .callout-label {
+      font-size: 16px; /* Increased font size from 12px to 16px */
+      fill: #333;
     }
   </style>
 </head>
@@ -53,6 +64,60 @@
   <svg id="chart" width="800" height="600" aria-labelledby="title desc" role="img">
     <title id="title">Magic Quadrant: Explainability vs Generalization</title>
     <desc id="desc">A chart showing the relationship between explainability and generalization across various AI methodologies.</desc>
+    
+    <!-- Define Gradients for Each Category -->
+    <defs>
+      <!-- Gradient for Symbolic AI -->
+      <radialGradient id="gradient0" cx="50%" cy="50%" r="50%" fx="35%" fy="35%">
+        <stop offset="0%" style="stop-color:#ffffff; stop-opacity:0.8" />
+        <stop offset="100%" style="stop-color:#1f77b4; stop-opacity:1" />
+      </radialGradient>
+      <!-- Gradient for Supervised Learning -->
+      <radialGradient id="gradient1" cx="50%" cy="50%" r="50%" fx="35%" fy="35%">
+        <stop offset="0%" style="stop-color:#ffffff; stop-opacity:0.8" />
+        <stop offset="100%" style="stop-color:#ff7f0e; stop-opacity:1" />
+      </radialGradient>
+      <!-- Gradient for Unsupervised Learning -->
+      <radialGradient id="gradient2" cx="50%" cy="50%" r="50%" fx="35%" fy="35%">
+        <stop offset="0%" style="stop-color:#ffffff; stop-opacity:0.8" />
+        <stop offset="100%" style="stop-color:#2ca02c; stop-opacity:1" />
+      </radialGradient>
+      <!-- Gradient for Semi-Supervised Learning -->
+      <radialGradient id="gradient3" cx="50%" cy="50%" r="50%" fx="35%" fy="35%">
+        <stop offset="0%" style="stop-color:#ffffff; stop-opacity:0.8" />
+        <stop offset="100%" style="stop-color:#d62728; stop-opacity:1" />
+      </radialGradient>
+      <!-- Gradient for Reinforcement Learning -->
+      <radialGradient id="gradient4" cx="50%" cy="50%" r="50%" fx="35%" fy="35%">
+        <stop offset="0%" style="stop-color:#ffffff; stop-opacity:0.8" />
+        <stop offset="100%" style="stop-color:#9467bd; stop-opacity:1" />
+      </radialGradient>
+      <!-- Gradient for Deep Learning -->
+      <radialGradient id="gradient5" cx="50%" cy="50%" r="50%" fx="35%" fy="35%">
+        <stop offset="0%" style="stop-color:#ffffff; stop-opacity:0.8" />
+        <stop offset="100%" style="stop-color:#8c564b; stop-opacity:1" />
+      </radialGradient>
+      <!-- Gradient for Bayesian Networks -->
+      <radialGradient id="gradient6" cx="50%" cy="50%" r="50%" fx="35%" fy="35%">
+        <stop offset="0%" style="stop-color:#ffffff; stop-opacity:0.8" />
+        <stop offset="100%" style="stop-color:#e377c2; stop-opacity:1" />
+      </radialGradient>
+      <!-- Gradient for Genetic Algorithms -->
+      <radialGradient id="gradient7" cx="50%" cy="50%" r="50%" fx="35%" fy="35%">
+        <stop offset="0%" style="stop-color:#ffffff; stop-opacity:0.8" />
+        <stop offset="100%" style="stop-color:#7f7f7f; stop-opacity:1" />
+      </radialGradient>
+      <!-- Gradient for Transformer Models -->
+      <radialGradient id="gradient8" cx="50%" cy="50%" r="50%" fx="35%" fy="35%">
+        <stop offset="0%" style="stop-color:#ffffff; stop-opacity:0.8" />
+        <stop offset="100%" style="stop-color:#bcbd22; stop-opacity:1" />
+      </radialGradient>
+      <!-- Gradient for ANI -->
+      <radialGradient id="gradient9" cx="50%" cy="50%" r="50%" fx="35%" fy="35%">
+        <stop offset="0%" style="stop-color:#ffffff; stop-opacity:0.8" />
+        <stop offset="100%" style="stop-color:#17becf; stop-opacity:1" />
+      </radialGradient>
+    </defs>
   </svg>
   
   <!-- Tooltip Element -->
@@ -72,10 +137,10 @@
         { name: "ANI", explainability: 5, generalization: 6, useCases: 500 }
     ];
 
-    const width = 800;
-    const height = 600;
+    const width = 1000; // Increased width to accommodate callouts
+    const height = 700; // Increased height for better spacing
     const margin = { top: 20, right: 20, bottom: 50, left: 50 };
-    const transparency = 0.7; // Adjusted transparency value
+    const transparency = 0.8; // Increased transparency for better visibility
 
     const xScale = d3.scaleLinear().domain([0, 10]).range([margin.left, width - margin.right]);
     const yScale = d3.scaleLinear().domain([0, 10]).range([height - margin.bottom, margin.top]);
@@ -108,8 +173,8 @@
       .attr("class", "bubble")
       .attr("cx", d => xScale(d.generalization))
       .attr("cy", d => yScale(d.explainability))
-      .attr("r", d => Math.sqrt(d.useCases) * 0.5) // Adjusted radius scaling
-      .attr("fill", d => d3.schemeTableau10[data.findIndex(item => item.name === d.name) % 10])
+      .attr("r", d => Math.sqrt(d.useCases) * 2.5) // Further increased radius scaling factor
+      .attr("fill", (d, i) => `url(#gradient${i})`) // Assign gradient based on data index
       .attr("fill-opacity", transparency)
       .attr("stroke", "black")
       .attr("stroke-width", 1)
@@ -118,15 +183,30 @@
           .duration(200)
           .style("visibility", "visible")
           .style("opacity", 0.9);
-        tooltip.html(`${d.name}<br>Explainability: ${d.explainability}<br>Generalization: ${d.generalization}<br>Use Cases: ${d.useCases}`);
+        tooltip.html(`<strong>${d.name}</strong><br>Explainability: ${d.explainability}<br>Generalization: ${d.generalization}<br>Use Cases: ${d.useCases}`);
       })
       .on("mousemove", function(event, d) {
-        // Get the mouse position relative to the viewport
-        const [mouseX, mouseY] = d3.pointer(event, window);
-        // Update tooltip position
+        // Get tooltip dimensions
+        const tooltipNode = tooltip.node();
+        const tooltipWidth = tooltipNode.offsetWidth;
+        const tooltipHeight = tooltipNode.offsetHeight;
+
+        let posX = event.clientX + 15;
+        let posY = event.clientY + 15;
+
+        // Check right boundary
+        if (posX + tooltipWidth > window.innerWidth) {
+          posX = event.clientX - tooltipWidth - 15;
+        }
+
+        // Check bottom boundary
+        if (posY + tooltipHeight > window.innerHeight) {
+          posY = event.clientY - tooltipHeight - 15;
+        }
+
         tooltip
-          .style("left", (event.clientX + 15) + "px") // 15px offset to the right
-          .style("top", (event.clientY + 15) + "px"); // 15px offset below
+          .style("left", posX + "px")
+          .style("top", posY + "px");
       })
       .on("mouseout", function() {
         tooltip.transition()
@@ -161,66 +241,35 @@
       .attr("text-anchor", "middle")
       .text("Explainability (0-10)");
 
-    // Create a Legend
-    const legendOffsetX = 10;
-    const legendOffsetY = 10;
-    const legendGroupX = xScale(7); // Positioning at generalization = 7
-    const legendGroupY = yScale(9); // Positioning at explainability = 9
-
-    const legend = svg.append("g")
-      .attr("transform", `translate(${legendGroupX + legendOffsetX},${legendGroupY - legendOffsetY})`);
-
-    // Add a border for the legend
-    legend.append("rect")
-      .attr("x", -10) // Adjust for padding
-      .attr("y", -10) // Adjust for padding
-      .attr("width", 230) // Width of the border
-      .attr("height", data.length * 20 + 32) // Height based on number of items
-      .style("fill", "white") // Background color
-      .style("stroke", "black") // Border color
-      .style("stroke-width", 1); // Border width
-
-    // Add a title to the legend
-    legend.append("text")
-      .attr("x", 25)
-      .attr("y", 15) // Position the title
-      .style("font-weight", "bold")
-      .text("Legend key");
-
-    // Legend Data
-    const legendData = [
-      { color: d3.schemeTableau10[0], label: "Symbolic AI" },
-      { color: d3.schemeTableau10[1], label: "Supervised Learning" },
-      { color: d3.schemeTableau10[2], label: "Unsupervised Learning" },
-      { color: d3.schemeTableau10[3], label: "Semi-Supervised Learning" },
-      { color: d3.schemeTableau10[4], label: "Reinforcement Learning" },
-      { color: d3.schemeTableau10[5], label: "Deep Learning" },
-      { color: d3.schemeTableau10[6], label: "Bayesian Networks" },
-      { color: d3.schemeTableau10[7], label: "Genetic Algorithms" },
-      { color: d3.schemeTableau10[8], label: "Transformer Models" },
-      { color: d3.schemeTableau10[9], label: "ANI" }
-    ];
-
-    legend.selectAll("rect.legend-item")
-      .data(legendData)
+    // Create Callouts for Each Bubble
+    svg.selectAll(".callout")
+      .data(data)
       .enter()
-      .append("rect")
-      .attr("class", "legend-item")
-      .attr("x", 0)
-      .attr("y", (d, i) => i * 20 + 20) // Position items below the title
-      .attr("width", 18)
-      .attr("height", 18)
-      .style("fill", d => d.color)
-      .style("fill-opacity", transparency);
-      
-    legend.selectAll("text.legend-label")
-      .data(legendData)
-      .enter()
-      .append("text")
-      .attr("class", "legend-label")
-      .attr("x", 25)
-      .attr("y", (d, i) => i * 20 + 35) // Position labels next to the items
-      .text(d => d.label);
+      .append("g")
+      .attr("class", "callout")
+      .each(function(d, i) {
+        const calloutGroup = d3.select(this);
+        const bubbleX = xScale(d.generalization);
+        const bubbleY = yScale(d.explainability);
+        const labelOffsetX = 30; // Horizontal offset for labels
+        const labelX = bubbleX - labelOffsetX;
+        const labelY = bubbleY - Math.sqrt(d.useCases) * 2.5 - 10; // Position label above the bubble
+
+        // Draw a dashed line (callout line) from bubble to label
+        calloutGroup.append("line")
+          .attr("x1", bubbleX)
+          .attr("y1", bubbleY)
+          .attr("x2", labelX)
+          .attr("y2", labelY)
+          .attr("class", "callout-line");
+
+        // Add the label text
+        calloutGroup.append("text")
+          .attr("class", "callout-label")
+          .attr("x", labelX + 5) // Slight offset from the line end
+          .attr("y", labelY)
+          .text(d.name);
+      });
   </script>
 </body>
 </html>
