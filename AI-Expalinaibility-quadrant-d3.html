@@ -254,7 +254,6 @@
         const bubbleY = yScale(d.explainability);
         const labelOffsetX = 0; // Horizontal offset for labels
         const labelX = (d.name === "ANI") ? bubbleX + 70 : bubbleX - labelOffsetX; // Position ANI label to the left
-
         const labelY = bubbleY - Math.sqrt(d.useCases) * 2.5 - 10; // Position label above the bubble
 
         // Draw a dashed line (callout line) from bubble to label
