@@ -49,12 +49,13 @@
     }
     .callout-line {
       stroke: #999;
-      stroke-width: 1px;
+      stroke-width: 2px;
       fill: none;
-      stroke-dasharray: 2,2;
+      stroke-dasharray: 6,2;
     }
     .callout-label {
       font-size: 16px; /* Increased font size from 12px to 16px */
+      text-anchor: middle;
       fill: #333;
     }
   </style>
@@ -251,8 +252,9 @@
         const calloutGroup = d3.select(this);
         const bubbleX = xScale(d.generalization);
         const bubbleY = yScale(d.explainability);
-        const labelOffsetX = 30; // Horizontal offset for labels
-        const labelX = bubbleX - labelOffsetX;
+        const labelOffsetX = 0; // Horizontal offset for labels
+        const labelX = (d.name === "ANI") ? bubbleX + 70 : bubbleX - labelOffsetX; // Position ANI label to the left
+
         const labelY = bubbleY - Math.sqrt(d.useCases) * 2.5 - 10; // Position label above the bubble
 
         // Draw a dashed line (callout line) from bubble to label
@@ -263,10 +265,10 @@
           .attr("y2", labelY)
           .attr("class", "callout-line");
 
-        // Add the label text
+        // Add the label text permanently here
         calloutGroup.append("text")
           .attr("class", "callout-label")
-          .attr("x", labelX + 5) // Slight offset from the line end
+          .attr("x", labelX) // Slight offset from the line end
           .attr("y", labelY)
           .text(d.name);
       });
