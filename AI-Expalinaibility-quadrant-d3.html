@@ -3,6 +3,7 @@
 <head>
   <title>Magic Quadrant Chart</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.2/d3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -58,10 +59,23 @@
       text-anchor: middle;
       fill: #333;
     }
+    .export-button {
+      margin: 20px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .export-button:hover {
+      background-color: #0056b3;
+    }
   </style>
 </head>
 <body>
   <h1>Magic Quadrant: Explainability vs Generalization</h1>
+  <button class="export-button" onclick="exportToPNG()">Export to PNG</button>
   <svg id="chart" width="800" height="600" aria-labelledby="title desc" role="img">
     <title id="title">Magic Quadrant: Explainability vs Generalization</title>
     <desc id="desc">A chart showing the relationship between explainability and generalization across various AI methodologies.</desc>
@@ -250,11 +264,27 @@
       .attr("class", "callout")
       .each(function(d, i) {
         const calloutGroup = d3.select(this);
-        const bubbleX = xScale(d.generalization);
-        const bubbleY = yScale(d.explainability);
+        bubbleX = xScale(d.generalization);
+        bubbleY = yScale(d.explainability);
         const labelOffsetX = 0; // Horizontal offset for labels
-        const labelX = (d.name === "ANI") ? bubbleX + 70 : bubbleX - labelOffsetX; // Position ANI label to the left
-        const labelY = bubbleY - Math.sqrt(d.useCases) * 2.5 - 10; // Position label above the bubble
+        labelX = bubbleX - labelOffsetX
+        labelY = bubbleY - Math.sqrt(d.useCases) * 2.5 - 10
+        switch (d.name) {
+          case "Reinforcement Learning":
+            labelX = bubbleX + 70;
+            break;
+          case "ANI":
+            labelX = bubbleX + 70;
+            break;
+          case "Genetic Algorithms":
+            labelX = bubbleX - labelOffsetX
+            labelY = bubbleY + 40;
+            break;
+          case "Transformer Models":
+            labelY = bubbleY + 60;
+            break;
+
+        }
 
         // Draw a dashed line (callout line) from bubble to label
         calloutGroup.append("line")
@@ -271,6 +301,28 @@
           .attr("y", labelY)
           .text(d.name);
       });
+
+    function exportToPNG() {
+      const svgElement = document.getElementById("chart");
+      const svgData = new XMLSerializer().serializeToString(svgElement);
+      const canvas = document.createElement("canvas");
+      const ctx = canvas.getContext("2d");
+      const img = new Image();
+
+      img.onload = function() {
+        canvas.width = img.width;
+        canvas.height = img.height;
+        ctx.drawImage(img, 0, 0);
+        const pngFile = canvas.toDataURL("image/png");
+
+        const downloadLink = document.createElement("a");
+        downloadLink.href = pngFile;
+        downloadLink.download = "magic_quadrant_chart.png";
+        downloadLink.click();
+      };
+
+      img.src = "data:image/svg+xml;base64," + btoa(svgData);
+    }
   </script>
 </body>
 </html>
