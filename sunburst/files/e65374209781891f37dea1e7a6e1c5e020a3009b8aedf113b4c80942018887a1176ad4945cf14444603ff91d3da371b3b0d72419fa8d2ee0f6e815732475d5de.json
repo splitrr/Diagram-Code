@@ -6,14 +6,7 @@
         "children": [
           { "name": "Rules-Based Systems", "value": 150 },
           { "name": "Expert Systems", "value": 100 },
-          { "name": "Ontologies", "value": 70 },
-          {
-            "name": "ANI",
-            "children": [
-              { "name": "Rules-Based Systems", "value": 10 },
-              { "name": "Symbolic AI", "value": 10 }
-            ]
-          }
+          { "name": "Ontologies", "value": 70 }
         ]
       },
       {
@@ -22,116 +15,37 @@
           {
             "name": "Supervised Learning",
             "children": [
+              { "name": "Decision Trees", "value": 90 },
+              { "name": "Support Vector Machines", "value": 80 },
               {
                 "name": "Regression Algorithms",
                 "children": [
                   { "name": "Ordinary Least Squares Regression (OLSR)", "value": 1 },
                   { "name": "Linear Regression", "value": 1 },
-                  { "name": "Logistic Regression", "value": 1 },
-                  { "name": "Stepwise Regression", "value": 1 },
-                  { "name": "Multivariate Adaptive Regression Splines (MARS)", "value": 1 },
-                  { "name": "Locally Estimated Scatterplot Smoothing (LOESS)", "value": 1 }
-                ]
-              },
-              {
-                "name": "Instance-Based Algorithms",
-                "children": [
-                  { "name": "K-Nearest Neighbors (KNN)", "value": 1 },
-                  { "name": "Learning Vector Quantization (LVQ)", "value": 1 },
-                  { "name": "Self-Organizing Map (SOM)", "value": 1 }
-                ]
-              },
-              {
-                "name": "Regularization Algorithms",
-                "children": [
-                  { "name": "Ridge Regression", "value": 1 },
-                  { "name": "Least Absolute Shrinkage and Selection Operator (LASSO)", "value": 1 },
-                  { "name": "Elastic Net", "value": 1 }
-                ]
-              },
-              {
-                "name": "Decision Tree Algorithms",
-                "children": [
-                  { "name": "Classification and Regression Trees (CART)", "value": 1 },
-                  { "name": "C4.5 and C5.0", "value": 1 },
-                  { "name": "Chi-Squared Automatic Interaction Detection (CHAID)", "value": 1 },
-                  { "name": "Decision Stump", "value": 1 },
-                  { "name": "Random Forest", "value": 1 },
-                  { "name": "Gradient Boosting Machines (GBM)", "value": 1 }
-                ]
-              },
-              {
-                "name": "Bayesian Algorithms",
-                "children": [
-                  { "name": "Naive Bayes", "value": 1 },
-                  { "name": "Gaussian Naive Bayes", "value": 1 },
-                  { "name": "Bayesian Belief Network (BBN)", "value": 1 }
-                ]
-              },
-              {
-                "name": "Artificial Neural Networks",
-                "children": [
-                  { "name": "Perceptron", "value": 1 },
-                  { "name": "Multilayer Perceptron (MLP)", "value": 1 },
-                  { "name": "Radial Basis Function Network (RBFN)", "value": 1 }
+                  { "name": "Logistic Regression", "value": 1 }
                 ]
               }
             ]
-          },
-          {
-            "name": "Unsupervised Learning",
-            "children": [
-              {
-                "name": "Clustering Algorithms",
-                "children": [
-                  { "name": "K-Means Clustering", "value": 1 },
-                  { "name": "Hierarchical Clustering", "value": 1 },
-                  { "name": "DBSCAN", "value": 1 },
-                  { "name": "Gaussian Mixture Models (GMM)", "value": 1 }
-                ]
-              },
-              {
-                "name": "Association Rule Learning Algorithms",
-                "children": [
-                  { "name": "Apriori Algorithm", "value": 1 },
-                  { "name": "Eclat Algorithm", "value": 1 }
-                ]
-              },
-              {
-                "name": "Dimensionality Reduction",
-                "children": [
-                  { "name": "Principal Component Analysis (PCA)", "value": 1 },
-                  { "name": "Singular Value Decomposition (SVD)", "value": 1 },
-                  { "name": "Independent Component Analysis (ICA)", "value": 1 }
-                ]
-              }
-            ]
-          },
-          {
-            "name": "Semi-Supervised Learning",
-            "value": 10
-          },
-          {
-            "name": "Reinforcement Learning",
-            "value": 10
           },
           {
             "name": "Deep Learning",
             "children": [
-              { "name": "Convolutional Neural Networks (CNNs)", "value": 300 },
-              { "name": "Recurrent Neural Networks (RNNs)", "value": 150 },
               {
                 "name": "Transformer Models",
                 "children": [
-                  { "name": "GPT", "value": 200 },
-                  { "name": "BERT", "value": 150 }
+                  { "name": "GPT (Generative)", "value": 200 },
+                { "name": "BERT (Understanding)", "value": 150 },
+                  {
+                    "name": "Vision Transformers (ViT)",
+                    "value": 50
+                  }
                 ]
               },
               {
                 "name": "Generative AI",
                 "children": [
                   {
-                    "name": "Large Language Models (LLMs)",
+                    "name": "Large Language Models",
                     "children": [
                       { "name": "ChatGPT", "value": 180 },
                       { "name": "Claude", "value": 100 },
@@ -141,18 +55,37 @@
                   { "name": "Image Generation", "value": 100 },
                   { "name": "Music Generation", "value": 80 }
                 ]
+              },
+              { "name": "Convolutional Neural Networks", "value": 300 },
+              { "name": "Recurrent Neural Networks", "value": 150 }
+            ]
+          },
+          {
+            "name": "Unsupervised Learning",
+            "children": [
+              {
+                "name": "Clustering Algorithms",
+                "children": [
+                  { "name": "K-Means Clustering", "value": 1 },
+                  { "name": "Hierarchical Clustering", "value": 1 }
+                ]
+              },
+              {
+                "name": "Dimensionality Reduction",
+                "children": [
+                  { "name": "Principal Component Analysis (PCA)", "value": 1 },
+                  { "name": "Singular Value Decomposition (SVD)", "value": 1 }
+                ]
               }
             ]
           },
-          { "name": "Probabilistic Methods", "value": 5 },
-          { "name": "Evolutionary Algorithms", "value": 5 }
+          { "name": "Reinforcement Learning", "value": 10 }
         ]
       },
       {
         "name": "Robotics",
         "children": [
           { "name": "Autonomous Vehicles", "value": 100 },
-          { "name": "Robotic Arms", "value": 50 },
           { "name": "Humanoid Robots", "value": 50 }
         ]
       },
@@ -162,14 +95,6 @@
           { "name": "Object Detection", "value": 7 },
           { "name": "Facial Recognition", "value": 5 }
         ]
-      },
-      {
-        "name": "AGI",
-        "value": 0.5
-      },
-      {
-        "name": "ASI",
-        "value": 0.1
       }
     ]
   }
