@@ -4,12 +4,24 @@
   <title>Magic Quadrant Chart</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.2/d3.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Lato', sans-serif;
       margin: 0;
+      padding: 0;
+      display: flex; /* Use flexbox for layout */
+      background-color: #e1ebf6;
+      height: 100vh; /* Full viewport height */
+    }
+    .content {
+      flex: 1; /* Take the remaining space */
       padding: 20px;
-      position: relative; /* Ensure the body is a positioned ancestor */
+      text-align: center;
+      display: flex; /* Use flexbox for the content area */
+      flex-direction: column; /* Stack children vertically */
+      align-items: center; /* Center content horizontally */
+      justify-content: flex-start; /* Align items to the top */
     }
     svg {
       display: block;
@@ -71,74 +83,94 @@
     .export-button:hover {
       background-color: #0056b3;
     }
+    .shadow-border {
+      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5)); /* Shadow effect */
+      width: 100%; /* Full width */
+      height: auto; /* Auto height to maintain aspect ratio */
+      margin-top: 20px; /* Optional margin to separate from the title */
+    }
   </style>
 </head>
 <body>
-  <h1>Magic Quadrant: Explainability vs Generalization</h1>
-  <button class="export-button" onclick="exportToPNG()">Export to PNG</button>
-  <svg id="chart" width="800" height="600" aria-labelledby="title desc" role="img">
-    <title id="title">Magic Quadrant: Explainability vs Generalization</title>
-    <desc id="desc">A chart showing the relationship between explainability and generalization across various AI methodologies.</desc>
+  <div id="sidebar"></div> <!-- Placeholder for sidebar -->
+  <div class="content">
+    <h1>Magic Quadrant: Explainability vs Generalization</h1>
+    <svg id="chart" class="shadow-border" width="100%" height="auto" viewBox="0 0 1000 700" aria-labelledby="title desc" role="img">
+      <rect width="100%" height="100%" fill="white" /> <!-- White background rectangle -->
+      <title id="title">Magic Quadrant: Explainability vs Generalization</title>
+      <desc id="desc">A chart showing the relationship between explainability and generalization across various AI methodologies.</desc>
+      
+      <!-- Define Gradients for Each Category -->
+      <defs>
+        <!-- Gradient for Symbolic AI -->
+        <radialGradient id="gradient0" cx="50%" cy="50%" r="50%" fx="35%" fy="35%">
+          <stop offset="0%" style="stop-color:#ffffff; stop-opacity:0.8" />
+          <stop offset="100%" style="stop-color:#1f77b4; stop-opacity:1" />
+        </radialGradient>
+        <!-- Gradient for Supervised Learning -->
+        <radialGradient id="gradient1" cx="50%" cy="50%" r="50%" fx="35%" fy="35%">
+          <stop offset="0%" style="stop-color:#ffffff; stop-opacity:0.8" />
+          <stop offset="100%" style="stop-color:#ff7f0e; stop-opacity:1" />
+        </radialGradient>
+        <!-- Gradient for Unsupervised Learning -->
+        <radialGradient id="gradient2" cx="50%" cy="50%" r="50%" fx="35%" fy="35%">
+          <stop offset="0%" style="stop-color:#ffffff; stop-opacity:0.8" />
+          <stop offset="100%" style="stop-color:#2ca02c; stop-opacity:1" />
+        </radialGradient>
+        <!-- Gradient for Semi-Supervised Learning -->
+        <radialGradient id="gradient3" cx="50%" cy="50%" r="50%" fx="35%" fy="35%">
+          <stop offset="0%" style="stop-color:#ffffff; stop-opacity:0.8" />
+          <stop offset="100%" style="stop-color:#d62728; stop-opacity:1" />
+        </radialGradient>
+        <!-- Gradient for Reinforcement Learning -->
+        <radialGradient id="gradient4" cx="50%" cy="50%" r="50%" fx="35%" fy="35%">
+          <stop offset="0%" style="stop-color:#ffffff; stop-opacity:0.8" />
+          <stop offset="100%" style="stop-color:#9467bd; stop-opacity:1" />
+        </radialGradient>
+        <!-- Gradient for Deep Learning -->
+        <radialGradient id="gradient5" cx="50%" cy="50%" r="50%" fx="35%" fy="35%">
+          <stop offset="0%" style="stop-color:#ffffff; stop-opacity:0.8" />
+          <stop offset="100%" style="stop-color:#8c564b; stop-opacity:1" />
+        </radialGradient>
+        <!-- Gradient for Bayesian Networks -->
+        <radialGradient id="gradient6" cx="50%" cy="50%" r="50%" fx="35%" fy="35%">
+          <stop offset="0%" style="stop-color:#ffffff; stop-opacity:0.8" />
+          <stop offset="100%" style="stop-color:#e377c2; stop-opacity:1" />
+        </radialGradient>
+        <!-- Gradient for Genetic Algorithms -->
+        <radialGradient id="gradient7" cx="50%" cy="50%" r="50%" fx="35%" fy="35%">
+          <stop offset="0%" style="stop-color:#ffffff; stop-opacity:0.8" />
+          <stop offset="100%" style="stop-color:#7f7f7f; stop-opacity:1" />
+        </radialGradient>
+        <!-- Gradient for Transformer Models -->
+        <radialGradient id="gradient8" cx="50%" cy="50%" r="50%" fx="35%" fy="35%">
+          <stop offset="0%" style="stop-color:#ffffff; stop-opacity:0.8" />
+          <stop offset="100%" style="stop-color:#bcbd22; stop-opacity:1" />
+        </radialGradient>
+        <!-- Gradient for ANI -->
+        <radialGradient id="gradient9" cx="50%" cy="50%" r="50%" fx="35%" fy="35%">
+          <stop offset="0%" style="stop-color:#ffffff; stop-opacity:0.8" />
+          <stop offset="100%" style="stop-color:#17becf; stop-opacity:1" />
+        </radialGradient>
+      </defs>
+    </svg>
     
-    <!-- Define Gradients for Each Category -->
-    <defs>
-      <!-- Gradient for Symbolic AI -->
-      <radialGradient id="gradient0" cx="50%" cy="50%" r="50%" fx="35%" fy="35%">
-        <stop offset="0%" style="stop-color:#ffffff; stop-opacity:0.8" />
-        <stop offset="100%" style="stop-color:#1f77b4; stop-opacity:1" />
-      </radialGradient>
-      <!-- Gradient for Supervised Learning -->
-      <radialGradient id="gradient1" cx="50%" cy="50%" r="50%" fx="35%" fy="35%">
-        <stop offset="0%" style="stop-color:#ffffff; stop-opacity:0.8" />
-        <stop offset="100%" style="stop-color:#ff7f0e; stop-opacity:1" />
-      </radialGradient>
-      <!-- Gradient for Unsupervised Learning -->
-      <radialGradient id="gradient2" cx="50%" cy="50%" r="50%" fx="35%" fy="35%">
-        <stop offset="0%" style="stop-color:#ffffff; stop-opacity:0.8" />
-        <stop offset="100%" style="stop-color:#2ca02c; stop-opacity:1" />
-      </radialGradient>
-      <!-- Gradient for Semi-Supervised Learning -->
-      <radialGradient id="gradient3" cx="50%" cy="50%" r="50%" fx="35%" fy="35%">
-        <stop offset="0%" style="stop-color:#ffffff; stop-opacity:0.8" />
-        <stop offset="100%" style="stop-color:#d62728; stop-opacity:1" />
-      </radialGradient>
-      <!-- Gradient for Reinforcement Learning -->
-      <radialGradient id="gradient4" cx="50%" cy="50%" r="50%" fx="35%" fy="35%">
-        <stop offset="0%" style="stop-color:#ffffff; stop-opacity:0.8" />
-        <stop offset="100%" style="stop-color:#9467bd; stop-opacity:1" />
-      </radialGradient>
-      <!-- Gradient for Deep Learning -->
-      <radialGradient id="gradient5" cx="50%" cy="50%" r="50%" fx="35%" fy="35%">
-        <stop offset="0%" style="stop-color:#ffffff; stop-opacity:0.8" />
-        <stop offset="100%" style="stop-color:#8c564b; stop-opacity:1" />
-      </radialGradient>
-      <!-- Gradient for Bayesian Networks -->
-      <radialGradient id="gradient6" cx="50%" cy="50%" r="50%" fx="35%" fy="35%">
-        <stop offset="0%" style="stop-color:#ffffff; stop-opacity:0.8" />
-        <stop offset="100%" style="stop-color:#e377c2; stop-opacity:1" />
-      </radialGradient>
-      <!-- Gradient for Genetic Algorithms -->
-      <radialGradient id="gradient7" cx="50%" cy="50%" r="50%" fx="35%" fy="35%">
-        <stop offset="0%" style="stop-color:#ffffff; stop-opacity:0.8" />
-        <stop offset="100%" style="stop-color:#7f7f7f; stop-opacity:1" />
-      </radialGradient>
-      <!-- Gradient for Transformer Models -->
-      <radialGradient id="gradient8" cx="50%" cy="50%" r="50%" fx="35%" fy="35%">
-        <stop offset="0%" style="stop-color:#ffffff; stop-opacity:0.8" />
-        <stop offset="100%" style="stop-color:#bcbd22; stop-opacity:1" />
-      </radialGradient>
-      <!-- Gradient for ANI -->
-      <radialGradient id="gradient9" cx="50%" cy="50%" r="50%" fx="35%" fy="35%">
-        <stop offset="0%" style="stop-color:#ffffff; stop-opacity:0.8" />
-        <stop offset="100%" style="stop-color:#17becf; stop-opacity:1" />
-      </radialGradient>
-    </defs>
-  </svg>
-  
-  <!-- Tooltip Element -->
-  <div id="tooltip" class="tooltip"></div>
+    <!-- Tooltip Element -->
+    <div id="tooltip" class="tooltip"></div>
+  </div>
+
+  <footer style="text-align: center; margin-top: 20px;">
+    <p>&copy; 2025</p>
+  </footer>
 
   <script>
+    // Load the sidebar
+    fetch('sidebar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('sidebar').innerHTML = data;
+      });
+
     const data = [
         { name: "Symbolic AI", explainability: 9, generalization: 3, useCases: 150 },
         { name: "Supervised Learning", explainability: 6, generalization: 6, useCases: 300 },
